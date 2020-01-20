@@ -10,7 +10,7 @@ describe("extractor", function(){
         extractor.extract("   ").should.be.empty;
     });
 
-    it("should return an emtpy array for a string that only contains stopwords", function(){
+    it("should return an empty array for a string that only contains stopwords", function(){
         extractor.extract("an associated behind",{language:"english"}).should.be.empty;
     });
 
@@ -232,7 +232,22 @@ describe("extractor", function(){
 		extraction_result.should.not.be.empty;
 		extraction_result.should.eql(["Præsident", "Obama", "vågnede", "mandagen", "kongres", "nederlag", "partier", "mente", "halte", "præsidentperiode"]);
 	});
-
+    it("should return an array of 'keywords' for a Chinese string", function(){
+        var extraction_result = extractor.extract("奥巴马总统周一醒来，面临国会失败，双方都认为这可能会妨碍他担任总统自个儿。",{
+            language:"chinese",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["奥", "巴", "马", "总", "统", "周", "醒", "面", "国", "会", "失", "败", "双", "方", "都", "认", "会", "妨", "碍", "担", "总", "统"]);
+    });
+    it("should return an array of 'keywords' for an array of Chinese characters", function(){
+        var extraction_result = extractor.extract(["奥", "巴", "马", "总", "统", "周", "一", "醒", "来", "，", "面", "临", "国", "会", "失", "败", "，", "双", "方", "都", "认", "为", "这", "可", "能", "会", "妨", "碍", "他", "担", "任", "总", "统", "自个儿", "。"],{
+            language:"chinese",
+            return_changed_case:false
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["奥", "巴", "马", "总", "统", "周", "醒", "面", "国", "会", "失", "败", "双", "方", "都", "认", "会", "妨", "碍", "担", "总", "统"]);
+    });
     it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an English string", function(){
         var extraction_result = extractor.extract("Just published a @npmjs package to extract keywords from a string http://bit.ly/1edMNx6 #nodejs #npm",{
             language: "english",
@@ -241,7 +256,14 @@ describe("extractor", function(){
         extraction_result.should.not.be.empty;
         extraction_result.should.eql(["published","@npmjs","package","extract","keywords","string","http://bit.ly/1edMNx6","#nodejs","#npm"]);
     });
-
+    it("should return an array of 'keywords', including 1 URL and 2 hash tags, for an array of English words", function(){
+        var extraction_result = extractor.extract(["Just", "published", "a", "@npmjs", "package", "to", "extract", "keywords", "from", "a", "string", "http://bit.ly/1edMNx6", "#nodejs", "#npm"],{
+            language: "english",
+            return_changed_case: true
+        });
+        extraction_result.should.not.be.empty;
+        extraction_result.should.eql(["published","@npmjs","package","extract","keywords","string","http://bit.ly/1edMNx6","#nodejs","#npm"]);
+    });
     it("it should return an array of 'keywords', without things like parentheses and quotes, for a Tweet", function(){
         var extraction_result = extractor.extract('RT @joelgascoigne: \"Effective leaders (and brands) repeat themselves to the point where they can barely stand to hear themselves any mor ...',{
             language: "english",

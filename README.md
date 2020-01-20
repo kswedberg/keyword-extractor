@@ -1,20 +1,33 @@
 # Keyword Extractor
 
-A simple [NPM package](https://npmjs.org/package/keyword-extractor) for extracting _keywords_ from a string by
+A simple [NPM package](https://npmjs.org/package/@fusionary/keyword-extractor) for extracting _keywords_ from a string (or array of strings) by
 removing stopwords.
+
+> Note: this is a fork of the Michael De Lorenzo's [Keyword Extractor](https://github.com/michaeldelorenzo/keyword-extractor) to include Chinese and allow for an array of strings as the first argument.
 
 ## Installation
 
 ```sh
-$ npm install keyword-extractor
+npm install keyword-extractor
 ```
-### Install browserify, required for demo (modify sample.js file and browserify after that)
+
+## Running the demo
+
+This repo's demo html file is at `demo/index.html`. If you want to modify JavaScript for the demo (at `demo/sample.js`),
+make sure you've installed the development dependencies:
+
 ```sh
-$ npm install browserify
-$ cd keyword-extractor/demo
-$ browserify sample.js -o bundle.js
+npm install
 ```
-> [use online documentation for detalied usage](http://browserify.org/)
+
+Then run browserify:
+
+```sh
+cd keyword-extractor/demo
+browserify sample.js -o bundle.js
+```
+
+> [see browserify documentation for detailed usage](http://browserify.org/)
 
 ## Running tests
 
@@ -22,13 +35,13 @@ To run the test suite, first install the development dependencies by running the
 directory.
 
 ```sh
-$ npm install
+npm install
 ```
 
 To execute the package's tests, run:
 
 ``` sh
-$ make test
+make test
 ```
 
 ## Usage of the Module
@@ -42,13 +55,13 @@ var keyword_extractor = require("keyword-extractor");
 var sentence = "President Obama woke up Monday facing a Congressional defeat that many in both parties believed could hobble his presidency."
 
 //  Extract the keywords
-var extraction_result = keyword_extractor.extract(sentence,{
-                                                                language:"english",
-                                                                remove_digits: true,
-                                                                return_changed_case:true,
-                                                                remove_duplicates: false
+var extraction_result = keyword_extractor.extract(sentence, {
+    language:"english",
+    remove_digits: true,
+    return_changed_case:true,
+    remove_duplicates: false
 
-                                                           });
+});
 
 /*
   extraction result is:
@@ -73,15 +86,14 @@ var extraction_result = keyword_extractor.extract(sentence,{
 
 The second argument of the _extract_ method is an Object of configuration/processing settings for the extraction.
 
-Parameter Name | Description | Permitted Values
----------------|-------------|-----------------
-language       | The stopwords list to use. | _english_, _spanish_, _polish_, _german_, _french_, _italian_, _dutch_, _romanian_, _russian_, _portuguese_, _swedish_,
-remove_digits | Removes all digits from the results if set to true | _true_ or _false_
-return_changed_case | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case. | _true_ or _false_
-return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_
-remove_duplicates | Removes the duplicate keywords | _true_ , _false_ (defaults to _false_ )
-return_max_ngrams | Returns keywords that are ngrams with size 0-_integer_  | _integer_ , _false_ (defaults to _false_ )
-
+| Parameter Name       | Description                                                                                                                                                                                              | Permitted Values                                                                                                                                         |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| language             | The stopwords list to use.                                                                                                                                                                               | _english_, _chinese_, _danish_, _spanish_, _galician_, _german_, _french_, _italian_, _dutch_, _romanian_, _russian_, _polish_, _portuguese_, _swedish_, |
+| remove_digits        | Removes all digits from the results if set to true                                                                                                                                                       | _true_ or _false_                                                                                                                                        |
+| return_changed_case  | The case of the extracted keywords. Setting the value to _true_ will return the results all lower-cased, if _false_ the results will be in the original case.                                            | _true_ or _false_                                                                                                                                        |
+| return_chained_words | Instead of returning each word separately, join the words that were originally together. Setting the value to _true_ will join the words, if _false_ the results will be splitted on each array element. | _true_ or _false_                                                                                                                                        |
+| remove_duplicates    | Removes the duplicate keywords                                                                                                                                                                           | _true_ , _false_ (defaults to _false_ )                                                                                                                  |
+| return_max_ngrams    | Returns keywords that are ngrams with size 0-_integer_                                                                                                                                                   | _integer_ , _false_ (defaults to _false_ )                                                                                                               |
 
 ## Credits
 
@@ -89,3 +101,5 @@ The initial stopwords lists are taken from the following sources:
 
 - English [http://jmlr.org/papers/volume5/lewis04a/a11-smart-stop-list/english.stop]
 - Spanish [https://stop-words.googlecode.com/svn/trunk/stop-words/stop-words/stop-words-spanish.txt]
+
+Credits for other lists can be found in their respective files within the `lib/stopwords/` directory
