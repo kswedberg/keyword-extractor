@@ -1,50 +1,50 @@
 {
-    "author": "Michael De Lorenzo <michael@delorenzodesign.com> (http://mikedelorenzo.com)",
-    "name": "@fusionary/keyword-extractor",
-    "description": "Module for creating a keyword array from a string and excluding stop words. Forked from Michael De Lorenzo",
-    "keywords": [
-        "text",
-        "keyword",
-        "search",
-        "extract"
-    ],
-    "version": "0.0.18",
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://github.com/michaeldelorenzo/keyword-extractor/raw/master/LICENSE"
-        }
-    ],
-    "scripts": {
-        "test": "make test"
-    },
-    "contributors": [
-        "Marcos Sanz <marcossanzlatorre@gmail.com> (http://www.mistersanz.com)",
-        "d-oliveros (https://github.com/d-oliveros)",
-        "Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
-        "janvde (https://github.com/janvde)",
-        "Alex Gustafsson (https://github.com/AlexGustafsson)",
-        "Karl Swedberg (https://github.com/kswedberg)"
-    ],
-    "homepage": "https://github.com/kswedberg/keyword-extractor",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/kswedberg/keyword-extractor.git"
-    },
-    "bugs": {
-        "url": "https://github.com/kswedberg/keyword-extractor/issues"
-    },
-    "main": "./index",
-    "devDependencies": {
-        "browserify": "^16.5.0",
-        "mocha": "*",
-        "should": "*"
-    },
-    "dependencies": {
-        "underscore": "1.9.1",
-        "underscore.string": "3.3.5"
-    },
-    "engines": {
-        "node": ">= 10.0"
+  "author": "Michael De Lorenzo <michael@delorenzodesign.com> (http://mikedelorenzo.com)",
+  "name": "@fusionary/keyword-extractor",
+  "description": "Module for creating a keyword array from a string and excluding stop words. Forked from Michael De Lorenzo",
+  "keywords": [
+    "text",
+    "keyword",
+    "search",
+    "extract"
+  ],
+  "version": "0.0.19",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/michaeldelorenzo/keyword-extractor/raw/master/LICENSE"
     }
+  ],
+  "scripts": {
+    "test": "make test"
+  },
+  "contributors": [
+    "Marcos Sanz <marcossanzlatorre@gmail.com> (http://www.mistersanz.com)",
+    "d-oliveros (https://github.com/d-oliveros)",
+    "Abhijeet Sutar <ajduke@about.me> (https://github.com/ajduke)",
+    "janvde (https://github.com/janvde)",
+    "Alex Gustafsson (https://github.com/AlexGustafsson)",
+    "Karl Swedberg (https://github.com/kswedberg)"
+  ],
+  "homepage": "https://github.com/kswedberg/keyword-extractor",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kswedberg/keyword-extractor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kswedberg/keyword-extractor/issues"
+  },
+  "main": "./index",
+  "devDependencies": {
+    "browserify": "^16.5.0",
+    "mocha": "*",
+    "should": "*"
+  },
+  "dependencies": {
+    "underscore": "1.9.1",
+    "underscore.string": "3.3.5"
+  },
+  "engines": {
+    "node": ">= 10.0"
+  }
 }
